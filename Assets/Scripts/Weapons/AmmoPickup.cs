@@ -7,7 +7,7 @@ public class AmmoPickup : MonoBehaviour
     public GameObject ammoPickup;
     public AudioSource ammoPickupSound;
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
         ammoPickup.SetActive(false);
         ammoPickupSound.Play();
