@@ -12,5 +12,6 @@ public class AmmoPickup : MonoBehaviour
         ammoPickup.SetActive(false);
         ammoPickupSound.Play();
         GlobalAmmoCount.currentAmmo += 40;
+        GetComponent<BoxCollider>().enabled = false;
     }
 }

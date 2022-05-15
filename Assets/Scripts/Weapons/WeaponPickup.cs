@@ -13,5 +13,6 @@ public class WeaponPickup : MonoBehaviour
         weaponEquipped.SetActive(true);
         weaponPickup.SetActive(false);
         pickupSound.Play();
+        GetComponent<BoxCollider>().enabled = false;
     }
 }
