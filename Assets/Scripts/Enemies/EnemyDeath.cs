@@ -19,8 +19,9 @@ public class EnemyDeath : MonoBehaviour
         if (enemyHealth <= 0 && enemyDead == false)
         {
             enemyDead = true;
-            theEnemy.GetComponent<Animator>().Play("Death");
+            theEnemy.GetComponent<Animator>().Play("EnemyDeath");
             enemyAI.SetActive(false);
+            theEnemy.GetComponent<LookAtPlayer>().enabled = false;
         }
     }
 }
