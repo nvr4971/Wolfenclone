@@ -22,6 +22,7 @@ public class EnemyDeath : MonoBehaviour
             theEnemy.GetComponent<Animator>().Play("EnemyDeath");
             enemyAI.SetActive(false);
             theEnemy.GetComponent<LookAtPlayer>().enabled = false;
+            this.GetComponent<BoxCollider>().enabled = false;
         }
     }
 }

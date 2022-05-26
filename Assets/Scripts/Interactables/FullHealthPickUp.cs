@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AmmoPickup : MonoBehaviour
+public class FullHealthPickUp : MonoBehaviour
 {
-    public GameObject ammoPickup;
-    public AudioSource ammoPickupSound;
+    public GameObject cannedFood;
+    public AudioSource eatSound;
     public GameObject pickupText;
 
     void OnTriggerEnter(Collider other)
     {
-        ammoPickup.SetActive(false);
-        ammoPickupSound.Play();
-        GlobalAmmoCount.currentAmmo += 40;
+        GlobalHealth.healthValue = 100;
+
+        cannedFood.SetActive(false);
+        eatSound.Play();
         this.GetComponent<BoxCollider>().enabled = false;
 
         pickupText.SetActive(false);
-        pickupText.GetComponent<Text>().text = "Picked up Ammo Pack";
+        pickupText.GetComponent<Text>().text = "Full Health recovered";
         pickupText.SetActive(true);
     }
 }
