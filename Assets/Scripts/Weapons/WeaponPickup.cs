@@ -9,6 +9,7 @@ public class WeaponPickup : MonoBehaviour
     public GameObject weaponEquipped;
     public AudioSource pickupSound;
     public GameObject pickupText;
+    public GameObject pistolIcon;
 
     void OnTriggerEnter(Collider other)
     {
@@ -20,5 +21,7 @@ public class WeaponPickup : MonoBehaviour
         pickupText.SetActive(false);
         pickupText.GetComponent<Text>().text = "Picked up Weapon";
         pickupText.SetActive(true);
+
+        pistolIcon.SetActive(true);
     }
 }
