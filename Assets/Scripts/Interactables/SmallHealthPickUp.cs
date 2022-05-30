@@ -25,7 +25,7 @@ public class SmallHealthPickUp : MonoBehaviour
         this.GetComponent<BoxCollider>().enabled = false;
 
         pickupText.SetActive(false);
-        pickupText.GetComponent<Text>().text = "Full Health recovered";
+        pickupText.GetComponent<Text>().text = "10 Health recovered";
         pickupText.SetActive(true);
     }
 }
