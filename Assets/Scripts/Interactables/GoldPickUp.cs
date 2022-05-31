@@ -20,5 +20,7 @@ public class GoldPickUp : MonoBehaviour
         pickupText.SetActive(false);
         pickupText.GetComponent<Text>().text = "Picked up Stack of Gold Ingots";
         pickupText.SetActive(true);
+
+        GlobalComplete.treasureCount += 1;
     }
 }
