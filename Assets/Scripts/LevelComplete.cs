@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.SceneManagement;
 
 public class LevelComplete : MonoBehaviour
 {
@@ -25,5 +26,13 @@ public class LevelComplete : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         completePanel.SetActive(true);
+
+        yield return new WaitForSeconds(10);
+
+        GlobalScore.scoreValue = 0;
+        GlobalComplete.enemyCount = 0;
+        GlobalComplete.treasureCount = 0;
+
+        SceneManager.LoadScene(3);
     }
 }
