@@ -5,13 +5,8 @@ using UnityEngine.UI;
 
 public class GlobalAmmoCount : MonoBehaviour
 {
-    public static int currentAmmo;
+    public static int currentAmmo = 0;
     public GameObject ammoCountUI;
-
-    void Start()
-    {
-        currentAmmo = 0;
-    }
 
     void Update()
     {

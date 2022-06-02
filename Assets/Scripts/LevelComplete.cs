@@ -23,6 +23,12 @@ public class LevelComplete : MonoBehaviour
     {
         fadeOut.SetActive(true);
 
+        GlobalComplete.currentFloor += 1;
+        PlayerPrefs.SetInt("SceneToLoad", GlobalComplete.currentFloor);
+        PlayerPrefs.SetInt("LivesSaved", GlobalLives.livesValue);
+        PlayerPrefs.SetInt("ScoreSaved", GlobalScore.scoreValue);
+        PlayerPrefs.SetInt("AmmoSaved", GlobalAmmoCount.currentAmmo);
+
         yield return new WaitForSeconds(2);
 
         completePanel.SetActive(true);
@@ -33,6 +39,6 @@ public class LevelComplete : MonoBehaviour
         GlobalComplete.enemyCount = 0;
         GlobalComplete.treasureCount = 0;
 
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(GlobalComplete.currentFloor);
     }
 }
