@@ -35,7 +35,6 @@ public class LevelComplete : MonoBehaviour
 
         yield return new WaitForSeconds(10);
 
-        GlobalScore.scoreValue = 0;
         GlobalComplete.enemyCount = 0;
         GlobalComplete.treasureCount = 0;
 

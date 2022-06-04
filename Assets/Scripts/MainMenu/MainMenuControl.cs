@@ -45,15 +45,19 @@ public class MainMenuControl : MonoBehaviour
 
     public void LoadGame()
     {
-        StartCoroutine(LoadGameRoutine());
+        loadScene = PlayerPrefs.GetInt("SceneToLoad");
+
+        if (loadScene != 0)
+        {
+            StartCoroutine(LoadGameRoutine());
+        }
     }
 
     IEnumerator LoadGameRoutine()
     {
-        PlayerPrefs.GetInt("SceneToLoad", loadScene);
-        PlayerPrefs.GetInt("LivesSaved", loadLives);
-        PlayerPrefs.GetInt("ScoreSaved", loadScore);
-        PlayerPrefs.GetInt("AmmoSaved", loadAmmo);
+        loadLives = PlayerPrefs.GetInt("LivesSaved");
+        loadScore = PlayerPrefs.GetInt("ScoreSaved");
+        loadAmmo = PlayerPrefs.GetInt("AmmoSaved");
 
         clickSound.Play();
         fadeOut.SetActive(true);

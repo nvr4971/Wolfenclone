@@ -20,9 +20,14 @@ public class DoorOpen : MonoBehaviour
     IEnumerator CloseDoor()
     {
         yield return new WaitForSeconds(5);
+
         doorFX.Play();
+        theDoor.GetComponent<Animator>().Play("DoorClose");
+
+        yield return new WaitForSeconds(2);
+
         this.GetComponent<BoxCollider>().enabled = true;
         theOtherTrigger.GetComponent<BoxCollider>().enabled = true;
-        theDoor.GetComponent<Animator>().Play("DoorClose");
+        
     }
 }
