@@ -12,6 +12,7 @@ public class LevelComplete : MonoBehaviour
     public GameObject thePlayer;
     public GameObject levelTimer;
     public GameObject levelEntities;
+    public GameObject waitText;
 
     void OnTriggerEnter(Collider other)
     {
@@ -31,30 +32,32 @@ public class LevelComplete : MonoBehaviour
 
         completePanel.SetActive(true);
 
-        
+        GlobalComplete.currentFloor += 1;
 
-        if (GlobalComplete.currentFloor + 1 > SceneManager.sceneCountInBuildSettings)
+        if (GlobalComplete.currentFloor >= SceneManager.sceneCountInBuildSettings)
         {
-            GlobalComplete.enemyCount = 0;
-            GlobalComplete.treasureCount = 0;
+            waitText.GetComponent<Text>().text = "Returning to main menu...";
 
             yield return new WaitForSeconds(10);
+
+            GlobalComplete.enemyCount = 0;
+            GlobalComplete.treasureCount = 0;
 
             SceneManager.LoadScene(0);
         }
         else
         {
-            GlobalComplete.currentFloor += 1;
+            waitText.GetComponent<Text>().text = "Loading next level...";
 
             PlayerPrefs.SetInt("SceneToLoad", GlobalComplete.currentFloor);
             PlayerPrefs.SetInt("LivesSaved", GlobalLives.livesValue);
             PlayerPrefs.SetInt("ScoreSaved", GlobalScore.scoreValue);
             PlayerPrefs.SetInt("AmmoSaved", GlobalAmmoCount.currentAmmo);
 
+            yield return new WaitForSeconds(10);
+
             GlobalComplete.enemyCount = 0;
             GlobalComplete.treasureCount = 0;
-
-            yield return new WaitForSeconds(10);
 
             SceneManager.LoadScene(GlobalComplete.currentFloor);
         }
