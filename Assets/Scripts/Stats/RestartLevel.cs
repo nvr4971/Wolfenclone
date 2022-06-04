@@ -13,11 +13,23 @@ public class RestartLevel : MonoBehaviour
 
         if (GlobalLives.livesValue == 0)
         {
-            gameOver.SetActive(true);
+            StartCoroutine(GameOver());
         }
         else
         {
+            GlobalScore.scoreValue = PlayerPrefs.GetInt("ScoreSaved");
+            GlobalAmmoCount.currentAmmo = PlayerPrefs.GetInt("AmmoSaved");
+
             SceneManager.LoadScene(GlobalComplete.currentFloor);
         }
+    }
+    
+    IEnumerator GameOver()
+    {
+        gameOver.SetActive(true);
+
+        yield return new WaitForSeconds(4);
+
+        SceneManager.LoadScene(0);
     }
 }

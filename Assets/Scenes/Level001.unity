@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientSkyColor: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -2078,6 +2078,9 @@ MonoBehaviour:
   completePanel: {fileID: 937649002}
   thePlayer: {fileID: 83349481}
   levelTimer: {fileID: 506578241}
+  levelEntities: {fileID: 246286845}
+  waitText: {fileID: 0}
+  waitTimer: {fileID: 0}
 --- !u!65 &154705439
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26026,7 +26029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1546251547
 Transform:
   m_ObjectHideFlags: 0

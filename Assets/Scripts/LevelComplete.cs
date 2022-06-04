@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelComplete : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class LevelComplete : MonoBehaviour
     public GameObject completePanel;
     public GameObject thePlayer;
     public GameObject levelTimer;
+    public GameObject levelEntities;
 
     void OnTriggerEnter(Collider other)
     {
@@ -21,23 +23,42 @@ public class LevelComplete : MonoBehaviour
 
     IEnumerator CompleteFloor()
     {
-        fadeOut.SetActive(true);
+        levelEntities.SetActive(false);
 
-        GlobalComplete.currentFloor += 1;
-        PlayerPrefs.SetInt("SceneToLoad", GlobalComplete.currentFloor);
-        PlayerPrefs.SetInt("LivesSaved", GlobalLives.livesValue);
-        PlayerPrefs.SetInt("ScoreSaved", GlobalScore.scoreValue);
-        PlayerPrefs.SetInt("AmmoSaved", GlobalAmmoCount.currentAmmo);
+        fadeOut.SetActive(true);
 
         yield return new WaitForSeconds(2);
 
         completePanel.SetActive(true);
 
-        yield return new WaitForSeconds(10);
+        
 
-        GlobalComplete.enemyCount = 0;
-        GlobalComplete.treasureCount = 0;
+        if (GlobalComplete.currentFloor + 1 > SceneManager.sceneCountInBuildSettings)
+        {
+            GlobalComplete.enemyCount = 0;
+            GlobalComplete.treasureCount = 0;
 
-        SceneManager.LoadScene(GlobalComplete.currentFloor);
+            yield return new WaitForSeconds(10);
+
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            GlobalComplete.currentFloor += 1;
+
+            PlayerPrefs.SetInt("SceneToLoad", GlobalComplete.currentFloor);
+            PlayerPrefs.SetInt("LivesSaved", GlobalLives.livesValue);
+            PlayerPrefs.SetInt("ScoreSaved", GlobalScore.scoreValue);
+            PlayerPrefs.SetInt("AmmoSaved", GlobalAmmoCount.currentAmmo);
+
+            GlobalComplete.enemyCount = 0;
+            GlobalComplete.treasureCount = 0;
+
+            yield return new WaitForSeconds(10);
+
+            SceneManager.LoadScene(GlobalComplete.currentFloor);
+        }
+
+        
     }
 }
