@@ -42917,6 +42917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupSound: {fileID: 899964467}
+  pickupText: {fileID: 1524824347}
 --- !u!136 &2111889033
 CapsuleCollider:
   m_ObjectHideFlags: 0

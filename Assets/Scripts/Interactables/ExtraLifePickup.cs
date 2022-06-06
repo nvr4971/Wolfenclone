@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExtraLifePickup : MonoBehaviour
 {
     public AudioSource pickupSound;
+    public GameObject pickupText;
 
     void Update()
     {
@@ -15,5 +17,9 @@ public class ExtraLifePickup : MonoBehaviour
     {
         GlobalLives.livesValue += 1;
         gameObject.SetActive(false);
+
+        pickupText.SetActive(false);
+        pickupText.GetComponent<Text>().text = "Extra Life!";
+        pickupText.SetActive(true);
     }
 }
